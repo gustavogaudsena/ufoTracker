@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,8 @@ public class AvistamentoController {
         return avistamentoRepository.listarTodos();
     }
     @GetMapping("/comFiltros")
-    public List<Avistamento> listarComFiltro(@ModelAttribute AvistamentoFiltro f){
+    public List<Avistamento> listarComFiltro(@ModelAttribute AvistamentoFiltro f, HttpRequest request) {
+        request.getURI();
         if(f.isVazio()) return avistamentoRepository.listarTodos();
         Predicate<Avistamento> filtros = a -> true;
 
@@ -52,10 +54,6 @@ public class AvistamentoController {
         return avistamentoRepository.listarTodos().stream()
                 .filter(filtros).toList();
     }
-
-
-
-
 
 
 
