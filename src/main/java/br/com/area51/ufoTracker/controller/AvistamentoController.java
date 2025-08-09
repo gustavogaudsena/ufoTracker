@@ -30,7 +30,7 @@ public class AvistamentoController {
     public List<Avistamento> listarAvistamentos() {
         return avistamentoRepository.listarTodos();
     }
-    @GetMapping
+    @GetMapping("/comFiltros")
     public List<Avistamento> listarComFiltro(@ModelAttribute AvistamentoFiltro f){
         if(f.isVazio()) return avistamentoRepository.listarTodos();
         Predicate<Avistamento> filtros = a -> true;
