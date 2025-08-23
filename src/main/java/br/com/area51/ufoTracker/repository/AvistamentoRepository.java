@@ -3,7 +3,8 @@ package br.com.area51.ufoTracker.repository;
 import br.com.area51.ufoTracker.model.Avistamento;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
+//jpa -> hibernate
+//injecao ->
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -54,4 +55,5 @@ public class AvistamentoRepository  {
         a.setDataHora(LocalDateTime.now().minusDays(random.nextInt(100)));
         return a;
     }
+
 }
