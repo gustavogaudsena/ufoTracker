@@ -7,6 +7,7 @@ import br.com.area51.ufoTracker.repository.jpa.AvistamentoJPARepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public class AvistamentoController {
     private final AvistamentoRepository repository;
     private final AvistamentoJPARepository jpaRepo;
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/paginado")
     public ResponseEntity<List<Avistamento>> listarTodosPaginado(
             @RequestHeader(value = "X-Page", required = false, defaultValue = "0")  int page,

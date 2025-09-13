@@ -13,13 +13,7 @@ import java.util.UUID;
 
 public interface CasoUFORepository extends JpaRepository<CasoUFO, UUID> {
     //JPQL
-    @Query("""
-            select distinct c 
-            from CasoUFO c
-            left join fetch c.relatos right 
-            where c.id = :id
-        """)
-    Optional<CasoUFO> findDetalhado(@Param("id") UUID id);
+
     @Query("""
         select c from CasoUFO c 
                 where lower(c.cidade) = lower(:cidade) 
